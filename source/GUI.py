@@ -683,7 +683,6 @@ class GUI:
 
     def load_all_from_path(self, pathname):
         # Resize our UI first to make sure that out width and height variables are set
-        self.resize_UI()
         print(f"Loading path: {pathname}")
         extensions = self.allowable_image_filetypes[0][1].split()
         extensions.extend(self.allowable_image_filetypes[1][1].split())

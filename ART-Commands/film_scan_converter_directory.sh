@@ -1,26 +1,10 @@
 #!/bin/bash
 
 # Python interpreter to use
-PYTHON=$HOME/dev/Film-Scan-Converter/FilmScanConverterVenv/bin/python
+PYTHON={path to your Film Scan Converter VENV  python executable}
 
 # directory where Film-Scan-Converter is located
-FSC_DIR=$HOME/dev/Film-Scan-Converter
-
-export PATH=$HOME/.local/bin:/opt/local/bin:/usr/local/bin:/usr/bin:$PATH
-
-#############################################################################
-
-# turn off cropping and modules coming later in the pipeline
-d=$(mktemp -d)
-t=$d/p1.arp
-wd=$(-d)
-cat <<EOF > $t
-[Version]
-Version=1037
-
-[Crop]
-Enabled=false
-EOF
+FSC_DIR={path to Film Scan Converter root dir}
 
 "${PYTHON}" "${FSC_DIR}/source/Film Scan Converter.pyw" "-d" "$1" "-o" "$1/converted" &
 

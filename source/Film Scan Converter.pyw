@@ -14,6 +14,7 @@ def getopts():
     p = argparse.ArgumentParser()
     p.add_argument("-d", "--directory", help="load this directory on open")
     p.add_argument("-o", "--output_directory", help="set an output directory")
+    p.add_argument("-f", "--file", help="open one or more files on launch")
     return p.parse_args()
 
 
@@ -49,7 +50,14 @@ if __name__ == "__main__":
         root.iconbitmap(default=resource_path(datafile))
 
     window = GUI(root, opts.output_directory)
+
     if opts.directory is not None:
+        root.after(0, window.resize_UI)
         root.after(0, window.load_all_from_path, opts.directory)
+
+    if opts.file is not None:
+        filenames = opts.file.split()
+        root.after(0, window.resize_UI)
+        root.after(0, window.import_from_filenames, filenames)
 
     root.mainloop()
