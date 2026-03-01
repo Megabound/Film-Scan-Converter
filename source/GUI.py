@@ -6,6 +6,7 @@ import os
 import sys
 import threading
 import tkinter as tk
+from os.path import dirname
 from tkinter import colorchooser, filedialog, messagebox, ttk
 from typing import Literal
 
@@ -328,8 +329,9 @@ class GUI:
                 file=os.path.join(sys._MEIPASS, "dropper.png")
             ).subsample(15, 15)
         else:
+            print(f"Path: {os.path.join(dirname(__file__), 'assets/dropper.png')}")
             picker = tk.PhotoImage(
-                file=os.path.join("assets", "dropper.png")
+                file=os.path.join(dirname(__file__), "assets/dropper.png")
             ).subsample(15, 15)
         colour_title = ttk.Label(
             text="Colour Adjustment", font=self.header_style, padding=2
