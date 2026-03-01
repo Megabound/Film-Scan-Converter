@@ -32,7 +32,7 @@ logging.basicConfig(filename="logfile.log", level=logging.DEBUG, format=FORMAT)
 
 
 class GUI:
-    def __init__(self, master):
+    def __init__(self, master, output_directory=None):
         # Initialize Variables
         self.config_path = self._check_and_create_conf_folder()
         self.photos = []
@@ -677,6 +677,9 @@ class GUI:
                 widget.set(
                     self.default_settings[widget.key]
                 )  # initializes widgets with default settings
+
+        if output_directory != None:
+            self.set_destination_folder(output_directory)
 
     def load_all_from_path(self, pathname):
         # Resize our UI first to make sure that out width and height variables are set
@@ -1700,6 +1703,10 @@ class GUI:
         )  # opens dialog to choose folder
         if len(destination_folder) <= 1:  # no input is given
             return
+
+        self.set_destination_folder(destination_folder)
+
+    def set_destination_folder(self, destination_folder):
         self.destination_folder = destination_folder
         self.destination_folder_text.set(
             self.destination_folder

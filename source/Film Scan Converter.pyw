@@ -13,6 +13,7 @@ from GUI import GUI
 def getopts():
     p = argparse.ArgumentParser()
     p.add_argument("-d", "--directory", help="load this directory on open")
+    p.add_argument("-o", "--output_directory", help="set an output directory")
     return p.parse_args()
 
 
@@ -47,7 +48,7 @@ if __name__ == "__main__":
         root = tk.Tk()
         root.iconbitmap(default=resource_path(datafile))
 
-    window = GUI(root)
+    window = GUI(root, opts.output_directory)
     if opts.directory is not None:
         root.after(0, window.load_all_from_path, opts.directory)
 

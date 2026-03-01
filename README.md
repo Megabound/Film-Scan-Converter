@@ -1,3 +1,13 @@
+# Film Scan Converter + ART
+
+## What's this?
+
+This adds ART plugin compatibility for Film Scan Conveter, adding some command line option arguments for opening entire folders and for setting a default export folder.
+
+## What's ART?
+
+[Art](https://artraweditor.github.io) is a fork of RawTherapee with an overhauled UI that is just a really fantastic RAW processor.
+
 # Film Scan Converter
 
 A standalone application used for processing RAW film scans from a digital camera into final images  
