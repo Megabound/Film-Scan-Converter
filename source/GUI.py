@@ -687,8 +687,11 @@ class GUI:
         extensions = self.allowable_image_filetypes[0][1].split()
         extensions.extend(self.allowable_image_filetypes[1][1].split())
         files = []
+
         for extension in extensions:
             files.extend(glob.glob(os.path.join(pathname, extension)))
+
+        files = remove_duplicate_strings(files)
 
         if len(files) > 0:
             self.import_from_filenames(files)
@@ -2053,3 +2056,16 @@ class GUI:
                 photo.clear_memory()
                 return False
         return error
+
+
+def remove_duplicate_strings(strings):
+    seen = set()
+    result = []
+
+    for s in strings:
+        lower = s.lower()
+        if lower not in seen:
+            seen.add(lower)
+            result.append(s)
+
+    return result
