@@ -49,7 +49,7 @@ if __name__ == '__main__':
         root = tk.Tk()
         root.iconbitmap(default=resource_path(datafile))
 
-    window = GUI(root)
+    window = GUI(root, opts.output_directory)
 
     # If a directory argument has been passed then load it after the mainloop starts
     if opts.directory is not None:

@@ -25,7 +25,7 @@ FORMAT = '%(asctime)s:::%(levelname)s:::%(message)s'
 logging.basicConfig(filename='logfile.log', level=logging.DEBUG, format=FORMAT)
 
 class GUI:
-    def __init__(self, master):
+    def __init__(self, master, output_directory=None):
         # Initialize Variables
         self.config_path = self._check_and_create_conf_folder()
         self.photos = []
@@ -308,6 +308,9 @@ class GUI:
         for widget in self.widgets.values():
             if widget.key in self.default_settings:
                 widget.set(self.default_settings[widget.key]) # initializes widgets with default settings
+
+        if output_directory != None:
+            self.set_destination_folder(output_directory)
 
     def load_all_from_path(self, pathname):
         # Load all compatible files from the given path
@@ -992,8 +995,14 @@ class GUI:
         destination_folder = filedialog.askdirectory() + '/' # opens dialog to choose folder
         if len(destination_folder) <= 1: # no input is given
             return
+            
+        self.set_destination_folder(destination_folder)
+
+    def set_destination_folder(self, destination_folder):
         self.destination_folder = destination_folder
-        self.destination_folder_text.set(self.destination_folder) # display destination folder in GUI
+        self.destination_folder_text.set(
+            self.destination_folder
+        )  # display destination folder in GUI
 
     def export(self, n_photos=1):
         # Start export in seperate thread to keep UI responsive
