@@ -176,7 +176,7 @@ class GUI:
         if getattr(sys, 'frozen', False):
             picker = tk.PhotoImage(file=os.path.join(sys._MEIPASS, 'dropper.png')).subsample(15,15)
         else:
-            picker = tk.PhotoImage(file=os.path.join(dirname(__file__), "assets/dropper.png")).subsample(15,15)
+            picker = tk.PhotoImage(file=os.path.join(dirname(__file__), 'assets/dropper.png')).subsample(15,15)
         colour_title = ttk.Label(text='Colour Adjustment', font=self.header_style, padding=2)
         self.colourFrame = ttk.LabelFrame(dynamic_scroll_frame.frame, borderwidth=2, labelwidget=colour_title, padding=5)
         colour_controls = ttk.Frame(self.colourFrame)
@@ -314,7 +314,7 @@ class GUI:
 
     def load_all_from_path(self, pathname):
         # Load all compatible files from the given path
-        print(f"Loading path: {pathname}")
+        print(f'Loading path: {pathname}')
         extensions = self.allowable_image_filetypes[0][1].split()
         extensions.extend(self.allowable_image_filetypes[1][1].split())
         files = []
@@ -522,18 +522,18 @@ class GUI:
 
     def import_from_filenames(self, filenames):
         # Import all files from the given string list
-        self.show_progress("Initializing import...")  # display progress opening
+        self.show_progress('Initializing import...')  # display progress opening
         self.import_button.configure(state=tk.DISABLED)
-        self.filemenu.entryconfigure("Import...", state=tk.DISABLED)
+        self.filemenu.entryconfigure('Import...', state=tk.DISABLED)
 
         total = len(filenames)
         self.photos = []
         photo_names = []
 
-        self.update_progress(20, f"Initializing {str(total)} photos...")
+        self.update_progress(20, f'Initializing {str(total)} photos...')
         
         for i, filename in enumerate(filenames):
-            print(f"Loding file: {filename}")
+            print(f'Loding file: {filename}')
             photo = RawProcessing(
                 file_directory=filename,
                 default_settings=self.default_settings,
@@ -541,9 +541,9 @@ class GUI:
                 config_path=self.config_path,
             )
             self.photos.append(photo)
-            photo_names.append(f"{str(i + 1)}. {str(photo)}")
+            photo_names.append(f'{str(i + 1)}. {str(photo)}')
 
-        self.update_progress(80, "Configuring GUI...")
+        self.update_progress(80, 'Configuring GUI...')
         
         self.photoCombo.configure(
             values=photo_names
@@ -551,11 +551,11 @@ class GUI:
 
         self.photoCombo.current(0)  # select the first photo to display
 
-        self.update_progress(90, "Loading photo...")
+        self.update_progress(90, 'Loading photo...')
         self.load_IMG()  # configure GUI to display the first photo
         self.update_progress(99)
         self.import_button.configure(state=tk.NORMAL)
-        self.filemenu.entryconfigure("Import...", state=tk.NORMAL)
+        self.filemenu.entryconfigure('Import...', state=tk.NORMAL)
         self.update_UI()
         if (
             self.glob_check.get() and self.global_settings != self.default_settings
