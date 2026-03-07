@@ -12,4 +12,6 @@ for file in "$@"; do
 	f="${f} ${file}"
 done
 
-"${PYTHON}" "${FSC_DIR}/source/Film Scan Converter.pyw" "-f" "$f" "-o" "$1/converted" &
+d="$(dirname "$1")/converted"
+
+"${PYTHON}" "${FSC_DIR}/source/Film Scan Converter.pyw" "-f" "$f" "-o" "$d" &
