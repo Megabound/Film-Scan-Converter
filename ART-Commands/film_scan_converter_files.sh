@@ -9,7 +9,13 @@ FSC_DIR={path to Film Scan Converter root dir}
 f=""
 
 for file in "$@"; do
-	f="${f} ${file}"
+	if [[ f -eq "" ]]; then
+		f=${file}
+	else
+		f="${f}, ${file}"
+	fi
 done
 
-"${PYTHON}" "${FSC_DIR}/source/Film Scan Converter.pyw" "-f" "$f" "-o" "$1/converted" &
+d="$(dirname "$1")/converted"
+
+"${PYTHON}" "${FSC_DIR}/source/Film Scan Converter.pyw" "-f" "$f" "-o" "$d" &

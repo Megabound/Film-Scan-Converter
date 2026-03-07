@@ -47,7 +47,7 @@ There are 3 command line variables that can be passed in when opening Film Scan 
 - Output Directory: `-o path/to/folder` this will set the output directory to the passed in path  
   Example use: `python "Film Scan Converter.pyw" -o /home/user/Pictures/scans/output`
 
-- Files: `-f path/to/file.tiff` this will open one or multiple files on open, files are separated with a space.  
-  Example use: `python "Film Scan Converter.pyw" -f "/home/user/Pictures/scans/scan_1.tiff /home/user/Pictures/scans/scan_2.tiff"`
+- Files: `-f path/to/file.tiff` this will open one or multiple files on open, files are separated with a comma (`,`).  
+  Example use: `python "Film Scan Converter.pyw" -f "/home/user/Pictures/scans/scan_1.tiff, /home/user/Pictures/scans/scan_2.tiff"`
 
 Multiple variables can be passed at once, so `python "Film Scan Converter.pyw" -d /home/user/Pictures/scans -o /home/user/Pictures/scans/output` is a valid set of options.

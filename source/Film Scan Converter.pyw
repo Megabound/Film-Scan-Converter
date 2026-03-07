@@ -59,7 +59,8 @@ if __name__ == '__main__':
     # If a file argument has been passed and a directory argument has not then load
     # them after mainloop starts
     if (opts.file is not None) and (opts.directory is None):
-        filenames = opts.file.split()
+        filenames = opts.file.split(',')        
+        filenames[:] = [name.strip() for name in filenames if os.path.isfile(name.strip())]
         root.after(0, window.resize_UI)
         root.after(0, window.import_from_filenames, filenames)
 
