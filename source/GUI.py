@@ -533,7 +533,7 @@ class GUI:
         self.update_progress(20, f'Initializing {str(total)} photos...')
         
         for i, filename in enumerate(filenames):
-            print(f'Loding file: {filename}')
+            print(f'Loading file: {filename}')
             photo = RawProcessing(
                 file_directory=filename,
                 default_settings=self.default_settings,
